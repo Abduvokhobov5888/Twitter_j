@@ -14,14 +14,14 @@ import com.example.a581j.Models.Story;
 import com.example.a581j.R;
 import com.google.android.material.imageview.ShapeableImageView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Storiesadapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Context context;
-    ArrayList<Story> items;
+    List<Story> items;
 
-    public Storiesadapter(Context context, ArrayList<Story> items) {
+    public Storiesadapter(Context context, List<Story> items) {
         this.context = context;
         this.items = items;
     }
@@ -41,8 +41,8 @@ public class Storiesadapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         Story story = items.get(position);
 
         if (holder instanceof StoriesViewHolder){
-            Glide.with(context).load(story.s_image).into(((StoriesViewHolder) holder).s_image);
-            ((StoriesViewHolder) holder).s_text.setText(story.s_text);
+            Glide.with(context).load(story.image).into(((StoriesViewHolder) holder).s_image);
+            ((StoriesViewHolder) holder).s_text.setText(story.text);
         }
 
     }

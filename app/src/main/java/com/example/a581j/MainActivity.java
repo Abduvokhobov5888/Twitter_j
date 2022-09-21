@@ -6,8 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.MediaController;
-import android.widget.VideoView;
 
 import com.example.a581j.Adapter.PostsAdapter;
 import com.example.a581j.Adapter.Storiesadapter;
@@ -15,10 +13,31 @@ import com.example.a581j.Models.Post;
 import com.example.a581j.Models.Story;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
+
+    List<Story> storys = Arrays.asList(
+            new Story(R.drawable.birds, "Abbos"),
+            new Story(R.drawable.nissan, "Muslim"),
+            new Story(R.drawable.birds, "Bek"),
+            new Story(R.drawable.nissan, "Ali"),
+            new Story(R.drawable.birds, "Salah"),
+            new Story(R.drawable.nissan, "Messi"),
+            new Story(R.drawable.birds, "Ronaldo"),
+            new Story(R.drawable.nissan, "Neymar")
+    );
+
+    List<Post> posts = Arrays.asList(
+            new Post(R.raw.videoo, "Abbosbek"),
+            new Post(R.raw.video, "Abbosbek"),
+            new Post(R.raw.videoo, "Abbosbek"),
+            new Post(R.raw.video, "Abbosbek")
+    );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,52 +46,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    void initViews(){
+    void initViews() {
         recyclerView = findViewById(R.id.rvStory);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        getAdapter(getData());
+        setStory(storys);
 
         recyclerView = findViewById(R.id.rvPost);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-        getAdapter1(getData1());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        setPost(posts);
     }
 
-    void getAdapter(ArrayList<Story> stories){
+    void setStory(List<Story> stories) {
         Storiesadapter storiesadapter = new Storiesadapter(this, stories);
         recyclerView.setAdapter(storiesadapter);
     }
 
-    ArrayList<Story> getData(){
-        ArrayList<Story> story  = new ArrayList<>();
 
-        story.add(new Story(R.drawable.birds, "Abbos"));
-        story.add(new Story(R.drawable.nissan, "Muslim"));
-        story.add(new Story(R.drawable.birds, "Bek"));
-        story.add(new Story(R.drawable.nissan, "Ali"));
-        story.add(new Story(R.drawable.birds, "Salah"));
-        story.add(new Story(R.drawable.nissan, "Messi"));
-        story.add(new Story(R.drawable.birds, "Ronaldo"));
-        story.add(new Story(R.drawable.nissan, "Neymar"));
-
-        return story;
-    }
-
-    void getAdapter1(ArrayList<Post> stories){
-        PostsAdapter storiesadapter = new PostsAdapter(this, stories);
+    void setPost(List<Post> post) {
+        PostsAdapter storiesadapter = new PostsAdapter(this, post);
         recyclerView.setAdapter(storiesadapter);
     }
 
-    ArrayList<Post> getData1(){
 
-
-        ArrayList<Post> story  = new ArrayList<>();
-
-        story.add(new Post(R.raw.videoo,"Abbosbek"));
-        story.add(new Post(R.raw.video,"Abbosbek"));
-        story.add(new Post(R.raw.videoo,"Abbosbek"));
-        story.add(new Post(R.raw.video,"Abbosbek"));
-
-
-        return story;
-    }
 }
