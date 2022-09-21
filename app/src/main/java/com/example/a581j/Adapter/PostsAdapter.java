@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -45,12 +46,16 @@ public class PostsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         Post story = items.get(position);
 
         if (holder instanceof StoriesViewHolder){
-            VideoView p_image = ((StoriesViewHolder) holder).p_image;
-            MediaController mediaController = new MediaController(this);
-            mediaController.setMediaPlayer(p_image);
-            p_image.setMediaController(mediaController);
+            VideoView videoView = ((StoriesViewHolder)holder).p_video;
 
-            ((StoriesViewHolder) holder).p_text.setText(story.p_text);
+            MediaController mediaController = new MediaController(context);
+            mediaController.setAnchorView(videoView);
+            videoView.setMediaController(mediaController);
+            videoView.setVideoURI(Uri.parse("android.resource://" + context.getPackageName() + "/" +
+                    R.raw.video));
+            videoView.start();
+
+            ((StoriesViewHolder)holder).p_text.setText(story.p_text);
         }
 
     }
@@ -60,14 +65,13 @@ public class PostsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         return items.size();
     }
 
-    class StoriesViewHolder extends RecyclerView.ViewHolder{
+    static class StoriesViewHolder extends RecyclerView.ViewHolder{
 
-        VideoView p_image;
+        VideoView p_video;
         TextView p_text;
         public StoriesViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            p_image = itemView.findViewById(R.id.p_image);
+            p_video = itemView.findViewById(R.id.p_video);
             p_text = itemView.findViewById(R.id.p_text);
         }
     }

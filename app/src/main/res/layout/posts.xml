@@ -68,15 +68,14 @@
                     android:text="Barchaga hayirli tong"
                     android:maxWidth="290dp"/>
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/p_image"
+                <VideoView
+                    android:id="@+id/p_video"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
                     android:adjustViewBounds="true"
-                    app:shapeAppearanceOverlay="@style/border"
-                    android:src="@drawable/nissan"/>
+                    app:shapeAppearanceOverlay="@style/border"/>
             </LinearLayout>
 
             <LinearLayout

@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 import com.example.a581j.Adapter.PostsAdapter;
 import com.example.a581j.Adapter.Storiesadapter;
@@ -15,12 +17,14 @@ import com.example.a581j.Models.Story;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
     RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
+
     }
 
     void initViews(){
@@ -59,16 +63,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     ArrayList<Post> getData1(){
+
+
         ArrayList<Post> story  = new ArrayList<>();
 
-        story.add(new Post(R.drawable.nissan, "Abbos"));
-        story.add(new Post(R.drawable.birds, "Messi"));
-        story.add(new Post(R.drawable.nissan, "Benzama"));
-        story.add(new Post(R.drawable.birds, "Assensio"));
-        story.add(new Post(R.drawable.nissan, "Abbos"));
-        story.add(new Post(R.drawable.birds, "Messi"));
-        story.add(new Post(R.drawable.nissan, "Benzama"));
-        story.add(new Post(R.drawable.birds, "Assensio"));
+        story.add(new Post(R.raw.videoo,"Abbosbek"));
+        story.add(new Post(R.raw.video,"Abbosbek"));
+        story.add(new Post(R.raw.videoo,"Abbosbek"));
+        story.add(new Post(R.raw.video,"Abbosbek"));
+
 
         return story;
     }
